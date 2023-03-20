@@ -51,7 +51,7 @@ function CreateAComment (props) {
     const submitComment = async () => {
         if (!user.uid){alert("You must sign in or create an account to use this feature") ; return}
         let videoDocRef  ;
-        if (default_channels.includes(props.video_information.channel_name)){
+        if (default_channels.includes(props.video_information.creator)){
             videoDocRef = doc(firestore, "videos", props.video_title) ; 
         } 
         else {
