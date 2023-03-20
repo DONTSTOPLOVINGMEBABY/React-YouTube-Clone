@@ -22,6 +22,17 @@ function CreateAComment (props) {
         }
     }
 
+    const default_channels = [
+        "Cinematic Masterpiece", 
+        "Dope House", 
+        "Everything Planes", 
+        "House of Memes", 
+        "Meditation Zone", 
+        "Meditative Music",
+        "Meme Powerhouse", 
+        "Tranquil Scenes", 
+    ]
+
     const make_new_comment = (userid, date, comment, avatar, name) => {
         return {
             uid : userid, 
@@ -39,7 +50,14 @@ function CreateAComment (props) {
 
     const submitComment = async () => {
         if (!user.uid){alert("You must sign in or create an account to use this feature") ; return}
-        let videoDocRef = doc(firestore, "videos", props.video_title) ; 
+        let videoDocRef  ;
+        if (default_channels.includes(props.video_information.channel_name)){
+            videoDocRef = doc(firestore, "videos", props.video_title) ; 
+        } 
+        else {
+            videoDocRef = doc(firestore, "videos", `Uploads_${props.video_information.user_id}_${props.video_information.title}`) ; 
+        }
+        
         let now = new Date() ; 
         now = now.getTime() ; 
         let comment = make_new_comment(user.uid, now, commentInput.current.value.trim(), user.profile_url, `${user.first_name} ${user.last_name}`) ; 

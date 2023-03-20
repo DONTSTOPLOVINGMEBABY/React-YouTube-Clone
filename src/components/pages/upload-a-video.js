@@ -80,9 +80,11 @@ function UploadAVideo () {
             description : description, 
             dislikes : 0, 
             likes : 0, 
-            title : title, 
+            title : `${title}.mp4`, 
             upload_date : pretty_print_date(upload_date), 
             view_count : 0, 
+            user_id : user.uid, 
+            channel_profile_picture : user.profile_url, 
         }
     }
 

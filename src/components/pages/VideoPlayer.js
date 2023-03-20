@@ -7,7 +7,8 @@ import Subscribe from "../content-interaction-components/subscribe";
 import LikeDislike from "../content-interaction-components/like-dislike";
 import CreateAComment from "../content-interaction-components/make-a-comment";
 import Comment from "../content-interaction-components/comment";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
+import { userContext } from "../utils/contexts";
 import "../../styles/play-video.css"
 
 function PlayVideo () {
@@ -15,7 +16,7 @@ function PlayVideo () {
     const [sideVideos, setSideVideos] = useState([]) ; 
     const [sideVideoObject, setSideVideoObject] = useState({}) ;
     const [profileUrl, setProfileUrl] = useState(null) ;  
-    
+
     const location = useLocation() ;  
     
     const description_and_views = useRef() ; 
@@ -30,6 +31,17 @@ function PlayVideo () {
     const [comments, setComments] = useState() ; 
     const [commentKeys, setCommentKeys] = useState() 
     const [views, setViews] = useState(video_information.view_count) ; 
+
+    const default_channels = [
+        "Cinematic Masterpiece", 
+        "Dope House", 
+        "Everything Planes", 
+        "House of Memes", 
+        "Meditation Zone", 
+        "Meditative Music",
+        "Meme Powerhouse", 
+        "Tranquil Scenes", 
+    ]
 
     const load_side_videos = async () => { 
         let hold_category_videos = [], rest_videos = [], all_videos = [] ;  
@@ -70,13 +82,24 @@ function PlayVideo () {
     }
 
     const grab_profile = async ( ) => {
-        let profileRef = ref(storage, channel_information.avatar) ; 
-        let url = await getDownloadURL(profileRef) ;
-        setProfileUrl(url)
+        if (default_channels.includes(video_information.creator)){
+            let profileRef = ref(storage, channel_information.avatar) ; 
+            let url = await getDownloadURL(profileRef) ;
+            setProfileUrl(url)
+        }
+        else {
+            setProfileUrl(video_information.channel_profile_picture) ; 
+        }
     }
 
     const update_video_view_count = async () => {
-        let string = `Uploads_${video_information.creator}_${video_information.title}` ; 
+        let string ; 
+        if (default_channels.includes(video_information.creator)){ 
+            string = `Uploads_${video_information.creator}_${video_information.title}`
+        } 
+        else {
+            string = `Uploads_${video_information.user_id}_${video_information.title}`
+        }
         let video_doc = doc(firestore, "videos", string) ; 
         await updateDoc( video_doc, {
             "view_count" : increment(1), 
@@ -106,7 +129,13 @@ function PlayVideo () {
     }
 
     const load_comments = async () => {
-        let video_ref = doc(firestore, "videos", `Uploads_${video_information.creator}_${video_information.title}`) ; 
+        let video_ref ; 
+        if (default_channels.includes(video_information.creator)){
+            video_ref = doc(firestore, "videos", `Uploads_${video_information.creator}_${video_information.title}`)
+        }
+        else {
+            video_ref = doc(firestore, "videos", `Uploads_${video_information.user_id}_${video_information.title}`)  
+        }   
         let video_data =  (await getDoc(video_ref)).data() ; 
         console.log(video_data) ; 
         setComments(video_data.comments) ; 
@@ -117,6 +146,7 @@ function PlayVideo () {
         load_side_videos() ;
         grab_profile() ; 
         load_comments() ; 
+        console.log(video_information) ; 
     }, [])
     
 
@@ -145,6 +175,7 @@ function PlayVideo () {
                             <div id="lower-half-right-inner">
                                 <LikeDislike 
                                 title={video_information.title} 
+                                current_channel={channel_information.channel_name}
                                 /> 
                             </div>
                         </div>
@@ -173,7 +204,7 @@ function PlayVideo () {
                 </div>
             </div>
             <div className="right-side">
-                { sideVideoObject && sideVideos && sideVideos.map( (name) => { 
+                { sideVideoObject && sideVideos &&  false && sideVideos.map( (name) => { 
                     return ( 
                     <PreviewPlayer
                     className="play-video-main-class"
