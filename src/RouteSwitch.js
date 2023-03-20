@@ -42,6 +42,7 @@ const RouteSwitch = () => {
                         <Route exact path="/video-player/:id" element={<PlayVideo/>}/>
                         <Route exact path="/individual-channel/:id" element={<ChannelPage/>}/>
                         <Route exact path="/upload-video" element={<UploadAVideo/>}/>
+                        <Route exact path="/channel-page/:id" element={<ChannelPage/>}/>
                     </Routes>
                 </div>
             </userContext.Provider>

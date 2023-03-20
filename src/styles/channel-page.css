@@ -1,0 +1,84 @@
+.ChannelPage {
+    flex-direction: column;
+}
+
+#channel-photo-container-1 {
+    display: flex;
+    align-items: center ; 
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+#channel-photo-container-2 {
+    width: 95%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#channel-photo {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#channel-info-and-subscribe {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#channel-page-profile-picture {
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+    margin-right: 18px;
+}
+
+#channel-page-channel-info {
+    display: flex;
+    margin-right: 100px;
+}
+
+#channel-page-info {
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;    
+}
+
+#channel-name-channel-page {
+    font-family: "YouTube Sans, Roboto";
+    color: white;
+    font-size: 30px;
+    margin: 0 0 12px 0 ; 
+}
+
+#channel-subinfo-channel-page {
+    color: #AAAAAA;
+    font-family: "Roboto";
+}
+
+#channel-handle {
+    font-weight: 700;
+}
+
+#channel-handle, #channel-subscribers {
+    margin-right: 8px;
+}
+
+#load-videos-channel-page {
+    width: 95%;
+    margin-top: 50px;
+    display: flex;    
+}
+
+

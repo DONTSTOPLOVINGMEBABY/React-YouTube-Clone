@@ -81,6 +81,13 @@ function PreviewPlayer (props) {
         window.location.reload() ; 
     }  
 
+    const load_channel = () => {
+
+        navigate(`/channel-page/${channelInfo.channel_name}`, { state : {
+            channel_information : channelInfo, 
+        }})
+    }
+
 
     const playVideo = () => {
         if (props.play){videoRef.current.play()}
@@ -103,7 +110,7 @@ function PreviewPlayer (props) {
 
 
     return (
-        <div className={props.className} onMouseEnter={playVideo} onMouseLeave={pauseVideo} onClick={load_video}>
+        <div className={props.className} onMouseEnter={playVideo} onClick={load_video} onMouseLeave={pauseVideo}>
             {  profileURL ? <>
                 <div className={props.main_container}>
                     <video className={props.video_class} ref={videoRef} muted>
@@ -112,11 +119,11 @@ function PreviewPlayer (props) {
                 </div>
                 <div className={props.video_information}>
                     <div className={props.profile_picture}>
-                        <img id={props.profile_photo} src={profileURL} alt="avatar"/>
+                        <img onClick={load_channel} id={props.profile_photo} src={profileURL} alt="avatar"/>
                     </div>
                     <div className={props.other_information}>
                         <div className={props.video_title}>{videoInformation.title.split(".")[0]}</div>
-                        <div className={props.video_channel}>{videoInformation.creator}</div>
+                        <div onClick={load_channel} className={props.video_channel}>{videoInformation.creator}</div>
                         <div className={props.group}>
                             <div className={props.views}>{videoInformation.view_count} views &#183; </div>
                             <div className={props.date}> {uploadTimeDifferece} days ago</div>
