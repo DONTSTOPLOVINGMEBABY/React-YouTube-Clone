@@ -1,0 +1,95 @@
+Fake YouTube Abstract: 
+
+The site will be a mock version of YouTube, where the homepage is filled with thumbnails of different categories of videos, uploaded by different users. 
+There will be three/four catgeories decided by me (sports, nature, drone videos, etc) and one section that is dedicated to user uploaded content. The user 
+uploaded content section will show videos from the x most recent videos uploaded. People will have the chance to create accounts, where they can upload their own
+videos, which will be displayed in the most recent videos uploaded. Users can interact with videos through a comments and likes sections. View counts will also be
+displayed for each video. Users will have the ability to subscribe to channels so that they can be notified when their favorite creators post videos. 
+
+
+Design Ideas
+--------------
+
+    Homepage: 
+        Header
+            - Search bar to search videos by title or by creator
+            - Youtube logo on the top left (serves as refresh point to get back to homepage when viewing videos)
+            - Easy upload icon
+            - Profile/stock photo when signed in. If not signed in, prompt for sign in. 
+        
+        Sidebar 
+            - History 
+            - Your videos
+            - Watch Later 
+            - Liked Videos
+            - Show Subscriptions with profiles
+
+        
+        Thumbnails 
+            - Top part contains video with timestamp in the bottom-right corner
+            - Title is directly underneath the video
+            - Uploader's profile picture, a link to their channel page, number of video views
+            - Upload Date
+            - Hover and video will start playing and transforms to something like 1.2x
+
+
+    Your Channel Page: 
+        Simple Header 
+            - Home
+            - Channels
+            - Playlists
+            - Videos
+            - About 
+
+        Broken Into Categories: 
+            - Show Uploaded videos
+            - Personal Playlists
+            - Subscriptions
+
+    Upload Page:
+        - Just a simple page that has a button to select a file to upload, a title, and a description for the video 
+        - Shows status bar as video is being uploaded. 
+        
+    
+Functionalities
+-------------
+    1. Search
+        - User should be able to search entire video library and receive live updates under search bar with results. 
+        - Perhaps use a regex that cuts out capitals and puncutation to match search results with what user inputs 
+
+
+
+
+Current ToDos 
+--------------
+- Design sidebar and mini-sidebar for nonsigned in Users
+-
+
+
+
+Database Functions
+-------------------
+- When User is first created
+
+    user : {
+        uploads : [],  # bucket of links 
+        watching_history: [], #set of links, duplicates means move that particular video to the top of list 
+        avatar: url , 
+        subscriptions: [], # bucket of other usernames
+        likes: [], 
+        playlists : {
+            watch_later : none, 
+            favorites: none, 
+        }, 
+    }
+
+- When a user uploads a video
+
+    video_name+uploading_user : {
+        category : string, 
+        video_url : string, 
+        title: string, 
+    }
+
+- Video Object 
+    

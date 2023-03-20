@@ -1,0 +1,191 @@
+.UploadVideo {
+    justify-content: center;
+    align-items: center;
+}
+
+.Upload-Main-Div {
+    height: 70%;
+    width: 40%;
+    background-color: #454545; 
+    /* background-color: var(--background-color); */
+    border-radius: 25px;
+    min-height: 650px;
+    min-width: 570px;
+    display: flex;
+    font-family: "Roboto";
+    color: white;
+    font-family: "YouTube Sans";
+    font-weight: 700;
+}
+
+.Choose-File {
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#upload-icon {
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+}
+
+#file-input {
+    display: none;
+   
+}
+
+#choose-a-file-title {
+    margin: 0;
+    text-align: center;
+}
+
+#file-button, #file-metadata-button, #upload-video-button {
+    height: 36px;
+    width: 149px;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #3DA6ff ;
+    color: black;
+}
+
+
+#file-button:active {
+    transform: scale(.9);
+    transition: ease-in .2;
+}
+
+#upload-video-details {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#upload-video-form-title {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.upload-form-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#upload-video-description-input {
+    height: 150px;
+    width: 300px;
+    resize: none;
+}
+
+#upload-video-title-input, #upload-video-category-input {
+    width: 300px;
+}
+
+#upload-other-input {
+    margin-top: 12px;
+}
+
+#file-metadata-button {
+    margin: 0;
+    height: 80px;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+#review-video-before-upload {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#preview-video {
+    height: 200px;
+    width: 200px;
+}
+
+#preview-video-before-submission {
+    display: flex;
+    justify-content: center ; 
+    width: 100%;
+    height: 225px;
+    align-items: center;
+}
+
+#review-video-metadata {
+    width: 300px;
+}
+
+.review-metadata-cell {
+    max-height: 40px;
+    max-width: 300px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+#bold-metadata-topic {
+    font-weight: 700;
+    margin-right: 4px;
+}
+
+#agreement-upload {
+    width: 60%;
+    margin-top: 12px;
+}
+
+#upload-video-button {
+    height: 80px;
+}
+
+#progress-bar {
+    width: 200px;
+    height: 30px;
+    background-color: #9cbab4;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+#progress__fill {
+    width:  0%;
+    height: 100%;
+    background-color: #009579; 
+    transition: all 0.2s;
+}
+
+#progress__text {
+    position: absolute;
+    top: 50% ; 
+    right: 5px;
+    transform: translateY(-50%);
+    
+}
+
+#show-download-preview {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
