@@ -21,6 +21,7 @@ function Subscribe (props) {
 
     const subscribe = async () => {
         if (!user.uid){alert("You must sign in or create an account to use this feature") ; return}
+        if (user.channel_name == props.current_channel){alert("You can't subscribe to your own channel! Sorry!") ; return}
         const user_subscribers = user.subscribers ; 
         user_subscribers.push(props.current_channel) ;
         setUser({...user, user_subscribers})
