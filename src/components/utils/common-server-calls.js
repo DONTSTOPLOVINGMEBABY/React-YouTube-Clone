@@ -30,10 +30,32 @@ async function setUserObject(uid, setUser) {
     setUser(user_get_doc.data()) ; 
 }
 
+async function set_download_links_by_creator(creator, setDownloadLinks = null, setVideoNames = null, setNamesAndLinks = null) {
+    let video_names = [] , names_and_links = {} ; 
+    const videos_collection = collection(firestore, "videos") ; 
+    const category_query = query(videos_collection, where("creator", "==", creator))
+    const docs = await getDocs(category_query) ; 
+    docs.forEach( (doc) => {video_names.push(doc.id.replace(/_/g, "/"))}) ; 
+    const download_urls = await Promise.all( 
+        video_names.map( async (name) => {
+            let name_ref = ref(storage, name) ; 
+            return await getDownloadURL(name_ref) ; 
+        })        
+     )
+    
+    video_names.map( (title, index) => {
+        names_and_links[title] = download_urls[index] ; 
+    })
+
+    if (setDownloadLinks) { setDownloadLinks(download_urls) } ; 
+    if (setVideoNames) {setVideoNames(video_names)} ; 
+    if (setNamesAndLinks) {setNamesAndLinks(names_and_links)} ; 
+}
 
 
 
 export {
     set_download_links_by_category, 
+    set_download_links_by_creator, 
     setUserObject, 
 }

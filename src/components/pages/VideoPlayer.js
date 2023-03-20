@@ -9,6 +9,7 @@ import CreateAComment from "../content-interaction-components/make-a-comment";
 import Comment from "../content-interaction-components/comment";
 import { useEffect, useState, useRef, useContext } from "react";
 import { userContext } from "../utils/contexts";
+import { useNavigate } from "react-router-dom";
 import "../../styles/play-video.css"
 
 function PlayVideo () {
@@ -31,6 +32,7 @@ function PlayVideo () {
     const [comments, setComments] = useState() ; 
     const [commentKeys, setCommentKeys] = useState() 
     const [views, setViews] = useState(video_information.view_count) ; 
+    const navigate = useNavigate() ; 
 
     const default_channels = [
         "Cinematic Masterpiece", 
@@ -142,6 +144,12 @@ function PlayVideo () {
         setCommentKeys(Object.keys(video_data.comments)) ; 
     }
 
+    const load_channel = () => {
+        navigate(`/channel-page/${channel_information.channel_name}`, { state : {
+            channel_information : channel_information, 
+        }})
+    }
+
     useEffect( () => {
         load_side_videos() ;
         grab_profile() ; 
@@ -162,7 +170,7 @@ function PlayVideo () {
                     <div className="description-title">{video_information.title.split(".")[0]}</div>
                     <div className="description-lower-half">
                         <div id="owner">
-                            <div id="owner-info">
+                            <div id="owner-info" onClick={load_channel}>
                                 <img id="owner-profile-picture" src={profileUrl} alt="Profile-Picture" />
                                 <div id="owner-name-sub-count">
                                     <div id="owner-name">{channel_information.channel_name}</div>
