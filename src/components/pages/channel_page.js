@@ -24,8 +24,8 @@ function ChannelPage () {
 
     const location = useLocation() ; 
 
-    const [channel_photo, setChannel_photo] = useState(default_channel_photo) ; 
-    const [profilePhoto, setProfilePhoto] = useState(default_channel_photo)
+    const [channel_photo, setChannel_photo] = useState() ; 
+    const [profilePhoto, setProfilePhoto] = useState()
     const [channelName, setChannelName] = useState("Hankus")
     const [subscribers, setSubscribers] = useState(23) ; 
     const [numberOfViews, setNumberOfViews] = useState(5) ;
@@ -54,11 +54,6 @@ function ChannelPage () {
         if (channelInformation){setInitialVariables()}
         set_download_links_by_creator(channelInformation.channel_name, setDownloadLinks, setVideoNames, setNamesAndLinks) ; 
     }, [channelInformation])
-
-    useEffect( () => {
-        console.log( downloadLinks, videoNames, namesAndLinks)   
-    }, [ downloadLinks, videoNames, namesAndLinks])
-
 
 
     return ( 
