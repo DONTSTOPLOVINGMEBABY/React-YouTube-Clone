@@ -21,9 +21,10 @@ function HomePage() {
     docsnap.forEach( (data) => {
       temp_names.push(data.id.replace(/_/g, '/'))
     }) 
+
     
     while (final_names.length < load_number_of_videos){
-      let random_number = Math.floor(Math.random() * (temp_names.length - 1)) ; 
+      let random_number = Math.floor(Math.random() * (temp_names.length)) ; 
       if (!final_names.includes(temp_names[random_number])) 
       {final_names.push(temp_names[random_number])}
     } 

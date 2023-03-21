@@ -270,6 +270,7 @@
     align-items: center; 
     justify-content: center;
     flex-direction: column;
+    color: black;
 }
 
 #agreement {
@@ -280,9 +281,31 @@
 #create-account-button {
     width: 100px;
     height: 50px;
+    margin-top: 12px;
 }
 
+#finish-setting-up-hold-form-inputs {
+    display: flex;
+    margin: 12px 0 12px 0;
+}
 
+.finish-setting-up-left {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
 
+.finish-setting-up-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form-cell-1 {
+    width: 95%;
+}
+
+.finish-setting-up-right > input {
+    margin-bottom: 4px ; 
+}
 
 /* END MODAL */ 
