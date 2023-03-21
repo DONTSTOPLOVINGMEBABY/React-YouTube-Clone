@@ -74,7 +74,16 @@ function SideBar () {
     }
 
     const open_channel_page = async (e) => {
-        let channel_information = (await getDoc(doc(firestore, "users", e.target.textContent))).data() ;
+        let channel_information ; 
+        if (default_channels.includes(e.target.textContent)){
+            channel_information = (await getDoc(doc(firestore, "users", e.target.textContent))).data() 
+        }
+        else {
+            let users_collection = collection(firestore, "users") ; 
+            let channel_query = query(users_collection, where("channel_name", "==", e.target.textContent)) ; 
+            channel_information = (await getDocs(channel_query)).docs[0].data() ; 
+        }
+        
         navigate(`/channel-page/${channel_information.channel_name}`, {state : {
             channel_information : channel_information, 
         }}) 
