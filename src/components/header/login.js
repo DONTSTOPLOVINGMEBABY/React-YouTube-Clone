@@ -43,7 +43,9 @@ function Login () {
     const {user, setUser} = useContext(userContext)
     const [modal, setModal] = useState(false) ; 
     const channel_name = useRef() ; 
-    const [checkBox, setCheckBox] = useState(false)
+    const [checkBox, setCheckBox] = useState(false) ; 
+    const [firstName, setFirstName] = useState() ; 
+    const [lastName, setLastName] = useState() ; 
 
     const toggle_modal = () => setModal(!modal) ; 
     const toggle_checkbox = () => setCheckBox(!checkBox)
@@ -56,9 +58,9 @@ function Login () {
         const querySnapshot = await getDocs(channel_query) ; 
         if (querySnapshot.size != 0) {alert("Channel name already taken") ; return}
         await setDoc( doc(firestore, "users", user.uid), make_first_time_user(
-            channel_name.current.value, user.first_name, user.last_name, user.uid, user.profile_url
+            channel_name.current.value, firstName, lastName, user.uid, user.profile_url
         ))
-        const update_user_login_information = {...user, logged_in : true, channel_name : channel_name.current.value}
+        const update_user_login_information = {...user, logged_in : true, channel_name : channel_name.current.value, first_name : firstName, last_name : lastName}
         setUser(update_user_login_information) ; 
         toggle_modal() ; 
         setUser(update_user_login_information) ;  
@@ -69,7 +71,10 @@ function Login () {
         let provider =  new GithubAuthProvider() ; 
         try {
             const sign_in = await signInWithPopup(auth, provider) ; 
-            const [first, last] = sign_in.user.displayName.split(" ") ; 
+            let first, last ; 
+            if (sign_in.user.displayName){
+                [first, last] = sign_in.user.displayName.split(" ") 
+            }
             let uid = sign_in.user.uid ; 
             let avatar = sign_in.user.photoURL ; 
             const check_if_account_exists = query(users_collection, where("uid", "==", `${uid}`))
@@ -78,21 +83,21 @@ function Login () {
                 const update_user_login_information = {
                     logged_in : false, 
                     uid : uid, 
-                    profile_url: avatar, 
-                    first_name : first, 
-                    last_name : last,  
+                    profile_url: avatar,   
                 }
                 setUser(update_user_login_information) ; 
                 toggle_modal () ; 
             }
             else {
+                first = exists_snapshot.docs[0].data().first_name ; 
+                last = exists_snapshot.docs[0].data().last_name ; 
                 const update_user_login_information = {
                     logged_in : true, 
                     uid : uid, 
                     profile_url: avatar, 
-                    first_name : first, 
-                    last_name : last,
                     channel_name: exists_snapshot.docs[0].data().channel_name,  
+                    first_name : first, 
+                    last_name : last, 
                 }
                 setUser(update_user_login_information) ; 
                 localStorage.setItem("login-info", JSON.stringify(update_user_login_information)) ; 
@@ -116,11 +121,19 @@ function Login () {
                         
                         <form className="finish-setting-up" onSubmit={loginFunction}>
                             <div className="modal-title">Finish Setting Up Your Account!</div>
-                            <div className="modal-form-cell">
-                                <label htmlFor="channel-name">Choose a name for your channel </label>
-                                <input type="text" id="channel-name" ref={channel_name} required/>
+                            <div id="finish-setting-up-hold-form-inputs">
+                                <div className="finish-setting-up-left">
+                                    <label htmlFor="channel-name">Channel Name</label>
+                                    <label htmlFor="signup-first-name">First Name</label>
+                                    <label htmlFor="signup-last-name">Last Name</label>
+                                </div>
+                                <div className="finish-setting-up-right">
+                                    <input type="text" id="channel-name" ref={channel_name} required/>
+                                    <input type="text" id="signup-first-name" onChange={(e) => setFirstName(e.target.value)} required/>
+                                    <input type="text" id="signup-last-name" onChange={(e) => setLastName(e.target.value)} required/>
+                                </div>
                             </div>
-                            <div className="modal-form-cell">
+                            <div className="modal-form-cell-1">
                                 <input type="checkbox" 
                                 id="agreement-statement" 
                                 checked={checkBox} 
