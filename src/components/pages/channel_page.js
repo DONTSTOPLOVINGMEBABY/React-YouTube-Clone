@@ -35,8 +35,10 @@ function ChannelPage () {
     const [namesAndLinks, setNamesAndLinks] = useState(null) ; 
 
     const setInitialVariables = async () => {
+        console.log(channelInformation)
         setChannelName(channelInformation.channel_name)
         setSubscribers(channelInformation.subscribers) ; 
+        setNumberOfViews(channelInformation.total_channel_views)
         if (default_channels.includes(channelInformation.channel_name)){
             let channel_ref = ref(storage, channelInformation.avatar) ;  
             let url = await getDownloadURL(channel_ref) ; 
@@ -75,7 +77,8 @@ function ChannelPage () {
                         </div>
                     </div>
                     <div id="subscribe-button-channel-page">
-                        <Subscribe current_channel={channelInformation.channel_name}/>
+                        <Subscribe channel_information={channelInformation} setChannel_information={setChannelInformation} 
+                        current_channel={channelInformation.channel_name}/>
                     </div>
                 </div>
                 <div id="load-videos-channel-page">

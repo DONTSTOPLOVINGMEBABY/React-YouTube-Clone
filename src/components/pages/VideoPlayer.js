@@ -113,6 +113,7 @@ function PlayVideo () {
             "total_channel_views" : increment(1), 
         })
         setViews(views + 1) ; 
+        setChannel_information({...channel_information, total_channel_views : channel_information.total_channel_views + 1})
     }
 
     const expand_description_section = () => {
@@ -183,7 +184,8 @@ function PlayVideo () {
                                     <div id="owner-sub-count">{channel_information.subscribers} subscribers</div>
                                 </div>
                             </div>
-                            <Subscribe current_channel={channel_information.channel_name}/> 
+                            <Subscribe channel_information={channel_information} setChannel_information={setChannel_information} 
+                            current_channel={channel_information.channel_name}/> 
                         </div>
                         <div id="lower-half-right">
                             <div id="lower-half-right-inner">
@@ -218,7 +220,7 @@ function PlayVideo () {
                 </div>
             </div>
             <div className="right-side">
-                { sideVideoObject && sideVideos && sideVideos.map( (name) => { 
+                { sideVideoObject && sideVideos && false && sideVideos.map( (name) => { 
                     return ( 
                     <PreviewPlayer
                     className="play-video-main-class"

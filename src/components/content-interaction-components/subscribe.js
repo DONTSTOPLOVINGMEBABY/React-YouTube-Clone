@@ -29,6 +29,9 @@ function Subscribe (props) {
         await updateDoc( user_ref, {
             "playlists.subscriptions" : arrayUnion(props.current_channel)
         }) 
+        if (props.setChannel_information){
+            props.setChannel_information({...props.channel_information, subscribers : props.channel_information.subscribers + 1})
+        }
     }
 
     const unsubscribe = async () => {
@@ -39,7 +42,10 @@ function Subscribe (props) {
         const user_ref = doc(firestore, "users", user.uid) ; 
         await updateDoc( user_ref, {
             "playlists.subscriptions" : arrayRemove(props.current_channel)
-        }) 
+        })
+        if (props.setChannel_information){
+            props.setChannel_information({...props.channel_information, subscribers : props.channel_information.subscribers - 1})
+        }
     }
 
     useEffect( () => {
