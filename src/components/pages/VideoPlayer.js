@@ -95,16 +95,22 @@ function PlayVideo () {
     }
 
     const update_video_view_count = async () => {
-        let string ; 
+        let string, string2 ; 
         if (default_channels.includes(video_information.creator)){ 
             string = `Uploads_${video_information.creator}_${video_information.title}`
+            string2 = `${video_information.creator}`
         } 
         else {
             string = `Uploads_${video_information.user_id}_${video_information.title}`
+            string2 = `${video_information.user_id}`
         }
         let video_doc = doc(firestore, "videos", string) ; 
+        let user_doc = doc(firestore, "users", string2) ; 
         await updateDoc( video_doc, {
             "view_count" : increment(1), 
+        })
+        await updateDoc( user_doc, {
+            "total_channel_views" : increment(1), 
         })
         setViews(views + 1) ; 
     }
@@ -212,7 +218,7 @@ function PlayVideo () {
                 </div>
             </div>
             <div className="right-side">
-                { sideVideoObject && sideVideos &&  false && sideVideos.map( (name) => { 
+                { sideVideoObject && sideVideos && sideVideos.map( (name) => { 
                     return ( 
                     <PreviewPlayer
                     className="play-video-main-class"
