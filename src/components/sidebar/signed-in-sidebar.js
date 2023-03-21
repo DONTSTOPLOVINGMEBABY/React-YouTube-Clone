@@ -11,6 +11,7 @@ import { getDocs, collection, query, where, doc, getDoc } from "@firebase/firest
 import { firestore, storage } from "../../firebase/firebase"
 import { getDownloadURL, ref } from "firebase/storage" 
 import Logout from "./sidebar-comps/logout"
+import { useNavigate } from "react-router-dom"
 
 
 function SideBar () {
@@ -20,6 +21,19 @@ function SideBar () {
     const [subscribedProfilePhotos, setSubscribedProfileChannels] = useState(null) ;  
     const {user, setUser} = useContext(userContext)
 
+    const default_channels = [
+        "Cinematic Masterpiece", 
+        "Dope House", 
+        "Everything Planes", 
+        "House of Memes", 
+        "Meditation Zone", 
+        "Meditative Music",
+        "Meme Powerhouse", 
+        "Tranquil Scenes", 
+    ]
+
+    const navigate = useNavigate() ; 
+
     const get_subscribers = async () => {
         const docRef = doc(firestore, "users", user.uid) ; 
         const user_data = await getDoc(docRef) ; 
@@ -27,12 +41,20 @@ function SideBar () {
         
         const profile_photos_links = await Promise.all( 
             subscribers.map( async (sub) => {
-              const subRef = doc(firestore, "users", sub) ; 
-              const getData = await getDoc(subRef) ; 
-              const link = getData.data().avatar ; 
-              const urlRef = ref(storage, link) ; 
-              const url = await getDownloadURL(urlRef) ; 
-              return url ; 
+              if (default_channels.includes(sub)){
+                const subRef = doc(firestore, "users", sub) ; 
+                const getData = await getDoc(subRef) ; 
+                const link = getData.data().avatar ; 
+                const urlRef = ref(storage, link) ; 
+                const url = await getDownloadURL(urlRef) ; 
+                return url ;
+              }
+              else {
+                const users_collection = collection(firestore, "users") ; 
+                const channel_query = query(users_collection, where("channel_name", "==", sub)) ; 
+                const snapshot = await getDocs(channel_query) ; 
+                return snapshot.docs[0].data().avatar
+              }
             })
          )
 
@@ -50,6 +72,15 @@ function SideBar () {
         setSubscribedChannels(subscribers)
         setSubscribedProfileChannels(temp_object) ; 
     }
+
+    const open_channel_page = async (e) => {
+        let channel_information = (await getDoc(doc(firestore, "users", e.target.textContent))).data() ;
+        navigate(`/channel-page/${channel_information.channel_name}`, {state : {
+            channel_information : channel_information, 
+        }}) 
+        window.location.reload() 
+    }
+
 
 
     useEffect( () => {
@@ -74,7 +105,8 @@ function SideBar () {
                     return ( <Category 
                         icon={subscribedProfilePhotos[sub]}
                         text={sub}
-                        key={sub} 
+                        key={sub}
+                        click={open_channel_page} 
                     />)  
                 })}
                 <Category 
