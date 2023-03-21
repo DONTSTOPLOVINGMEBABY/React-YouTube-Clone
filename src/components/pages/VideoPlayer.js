@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom"
 import { storage, firestore } from "../../firebase/firebase";
-import {doc, getDocs, getDoc, collection, query, where, updateDoc, increment} from "@firebase/firestore"
+import {doc, getDocs, getDoc, collection, query, where, updateDoc, increment, arrayUnion} from "@firebase/firestore"
 import { ref, getDownloadURL } from "firebase/storage";
 import PreviewPlayer from "./video-components/preview-player";
 import Subscribe from "../content-interaction-components/subscribe";
@@ -32,6 +32,7 @@ function PlayVideo () {
     const [comments, setComments] = useState() ; 
     const [commentKeys, setCommentKeys] = useState() 
     const [views, setViews] = useState(video_information.view_count) ; 
+    const {user, setUser} = useContext(userContext) ; 
     const navigate = useNavigate() ; 
 
     const default_channels = [
@@ -105,13 +106,26 @@ function PlayVideo () {
             string2 = `${video_information.user_id}`
         }
         let video_doc = doc(firestore, "videos", string) ; 
-        let user_doc = doc(firestore, "users", string2) ; 
+        let uploading_user_doc = doc(firestore, "users", string2) ;
         await updateDoc( video_doc, {
             "view_count" : increment(1), 
         })
-        await updateDoc( user_doc, {
+        await updateDoc( uploading_user_doc, {
             "total_channel_views" : increment(1), 
         })
+        if (user){
+            let watching_user_doc = doc(firestore, "users", user.uid) ; 
+            if (default_channels.includes(video_information.creator)){
+                await updateDoc( watching_user_doc, {
+                    "playlists.history" : arrayUnion(string)
+                })
+            }
+            else {
+                await updateDoc(watching_user_doc, {
+                    "playlists.history" : arrayUnion(`Uploads/${video_information.user_id}/${video_information.title}`), 
+                })
+            }
+        }
         setViews(views + 1) ; 
         setChannel_information({...channel_information, total_channel_views : channel_information.total_channel_views + 1})
     }
@@ -146,7 +160,6 @@ function PlayVideo () {
             video_ref = doc(firestore, "videos", `Uploads_${video_information.user_id}_${video_information.title}`)  
         }   
         let video_data =  (await getDoc(video_ref)).data() ; 
-        console.log(video_data) ; 
         setComments(video_data.comments) ; 
         setCommentKeys(Object.keys(video_data.comments)) ; 
     }
@@ -161,7 +174,6 @@ function PlayVideo () {
         load_side_videos() ;
         grab_profile() ; 
         load_comments() ; 
-        console.log(video_information) ; 
     }, [])
     
 
