@@ -10,6 +10,10 @@ function GeneralNavSection () {
         navigate("/") ; 
     }
     
+    const show_subscriptions = () => {
+        navigate("/subscriptions") 
+    }
+
     return (
         <div>
             <Category
@@ -20,6 +24,7 @@ function GeneralNavSection () {
             <Category
             icon={general_nav_sidebar_images.subscriptions_icon} 
             text="Subscriptions"
+            click={show_subscriptions}
             />
         </div>
     )

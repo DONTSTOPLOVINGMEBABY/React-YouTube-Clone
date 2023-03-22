@@ -1,4 +1,4 @@
-.profile-related-page {
+.profile-related-page, .show-subscriptions {
     font-family: "YouTube Sans, Roboto";
     color: white;
     flex-direction: column;
@@ -9,11 +9,34 @@
     margin-top: 50px;
 }
 
-.profile-related-players {
+.profile-related-players, #all-subscribers {
     width: 95%;
     height: 100%; 
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.subscriber-profile-photo {
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+}
+
+.individual-subscriber {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+    max-width: 220px;
+    text-align: center;
+}
+
+.subscriber-title {
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: 24px;
+    overflow: hidden;
 }
