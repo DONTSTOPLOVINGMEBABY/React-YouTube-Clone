@@ -156,6 +156,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 }
 
 #description-and-views {
@@ -243,9 +244,10 @@
     width: 136px;
     height: 35px;
     display: flex;
+    margin-right: 8px;
 }
 
-.button-interact {
+.button-interact, #add-to-watch-later-button {
     background-color: #3D3D3E;
     cursor: pointer ; 
     display: flex;
@@ -268,12 +270,12 @@
     border: none;
 }
 
-.like-button-icon-interact {
+.like-button-icon-interact , #watch-later-button-icon {
     height: 26px;
     width: 26px;
 }
 
-.button-hover:hover {
+.button-hover:hover, #add-to-watch-later-button:hover {
     background-color: #272727;
 }
 
@@ -283,6 +285,29 @@
     color: white;
     font-family: "Roboto, Raleway";
     font-weight: 500;
+}
+
+#add-to-watch-later-container {
+    border-radius: 25px;
+    width: 155px;
+    height: 36px;
+}
+
+#add-to-watch-later-button {
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#watch-later-text {
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    margin-left: 8px;
 }
 
 /* End Like-Dislike Button Styling */

@@ -1,10 +1,11 @@
-import { useLocation } from "react-router-dom"
+ import { useLocation } from "react-router-dom"
 import { storage, firestore } from "../../firebase/firebase";
 import {doc, getDocs, getDoc, collection, query, where, updateDoc, increment, arrayUnion} from "@firebase/firestore"
 import { ref, getDownloadURL } from "firebase/storage";
 import PreviewPlayer from "./video-components/preview-player";
 import Subscribe from "../content-interaction-components/subscribe";
 import LikeDislike from "../content-interaction-components/like-dislike";
+import AddToWatchLater from "../content-interaction-components/add-to-watch-later";
 import CreateAComment from "../content-interaction-components/make-a-comment";
 import Comment from "../content-interaction-components/comment";
 import { useEffect, useState, useRef, useContext } from "react";
@@ -213,6 +214,9 @@ function PlayVideo () {
                                 <LikeDislike 
                                 title={video_information.title} 
                                 current_channel={channel_information.channel_name}
+                                />
+                                <AddToWatchLater 
+                                title={make_video_title()}
                                 /> 
                             </div>
                         </div>
