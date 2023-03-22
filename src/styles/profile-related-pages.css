@@ -1,0 +1,19 @@
+#user-history {
+    font-family: "YouTube Sans, Roboto";
+    color: white;
+    flex-direction: column;
+    align-items: center;
+}
+
+#user-history-title {
+    margin-top: 50px;
+}
+
+#user-history-preview-players {
+    width: 95%;
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}

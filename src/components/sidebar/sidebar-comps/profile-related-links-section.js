@@ -17,6 +17,11 @@ function ProfileRelatedLinks () {
         navigate(`/channel-page/${user.channel_name}`, {state : {
             channel_information : channel_information, 
         }})
+        window.location.reload() ; 
+    }
+
+    const see_your_history = () => {
+        navigate("/viewing-history") ; 
     }
 
     return (
@@ -24,6 +29,7 @@ function ProfileRelatedLinks () {
             <Category 
                 icon={sidebar_profile_related_links_images.history_icon}
                 text="History"
+                click={see_your_history}
                 />
                 <Category 
                 icon={sidebar_profile_related_links_images.your_videos_icon}
