@@ -23,9 +23,9 @@ function LoggedIn () {
                 <div className="wrap-icon">
                     <img id="upload-video-icon" onClick={upload_video_page} src={upload_video} alt="upload-video-icon"/>
                 </div>
-                <div className="wrap-icon">
+                {/* <div className="wrap-icon">
                     <img id="notifications-bell-icon" src={notifications_bell} alt="notifications-bell"/>
-                </div>
+                </div> */}
                 <div className="profile">
                     {/* This needs to be able to load a profile photo from the user's profile */}
                     <img id="profile-picture-header" src={user.profile_url} alt="your-profile-avatar"/>

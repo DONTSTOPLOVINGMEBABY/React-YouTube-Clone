@@ -85,6 +85,7 @@ function UploadAVideo () {
             view_count : 0, 
             user_id : user.uid, 
             channel_profile_picture : user.profile_url, 
+            user_upload : true, 
         }
     }
 

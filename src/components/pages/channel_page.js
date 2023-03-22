@@ -55,6 +55,7 @@ function ChannelPage () {
     useEffect( () => {
         if (channelInformation){setInitialVariables()}
         set_download_links_by_creator(channelInformation.channel_name, setDownloadLinks, setVideoNames, setNamesAndLinks) ; 
+        
     }, [channelInformation])
 
 

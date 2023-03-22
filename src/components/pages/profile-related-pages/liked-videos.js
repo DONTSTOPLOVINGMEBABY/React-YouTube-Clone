@@ -21,7 +21,6 @@ function LoadLikedVideos () {
             const user_doc = doc(firestore, "users", user.uid) ; 
             const user_likes = (await getDoc(user_doc)).data().playlists.likes ;
             setVideoLikesArray(user_likes)
-            console.log(user_likes) 
         }
     }
 
