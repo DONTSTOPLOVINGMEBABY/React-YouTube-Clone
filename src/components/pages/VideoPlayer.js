@@ -164,6 +164,15 @@ function PlayVideo () {
         setCommentKeys(Object.keys(video_data.comments)) ; 
     }
 
+    const make_video_title = () => {
+        if (default_channels.includes(video_information.creator)){
+            return `Uploads_${video_information.creator}_${video_information.title}`
+        }
+        else {
+            return `Uploads_${video_information.user_id}_${video_information.title}`
+        }
+    }
+
     const load_channel = () => {
         navigate(`/channel-page/${channel_information.channel_name}`, { state : {
             channel_information : channel_information, 
@@ -223,7 +232,7 @@ function PlayVideo () {
                         {commentKeys && comments ? <div id="load-all-comments">
                             { commentKeys.map( (commentKey) => {
                                 return (<Comment comment={comments[commentKey]} setComments={setComments} key={commentKey}
-                                    video_title={`Uploads_${video_information.creator}_${video_information.title}`}
+                                    video_title={make_video_title()}
                                     commentKey={commentKey}/>)
                             })} </div>
                         : null } 
