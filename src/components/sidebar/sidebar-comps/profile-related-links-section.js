@@ -28,6 +28,10 @@ function ProfileRelatedLinks () {
         navigate("/liked-videos") ; 
     }
 
+    const see_your_watch_later_playlist = () => {
+        navigate("/watch-later")
+    }
+
     return (
         <div>
             <Category 
@@ -43,6 +47,7 @@ function ProfileRelatedLinks () {
                 <Category 
                 icon={sidebar_profile_related_links_images.clock_icon}
                 text="Watch Later"
+                click={see_your_watch_later_playlist}
                 />
                 <Category 
                 icon={sidebar_profile_related_links_images.likes_icon}
