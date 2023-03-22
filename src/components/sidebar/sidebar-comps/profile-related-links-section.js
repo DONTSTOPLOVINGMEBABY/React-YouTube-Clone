@@ -24,6 +24,10 @@ function ProfileRelatedLinks () {
         navigate("/viewing-history") ; 
     }
 
+    const see_your_likes = () => {
+        navigate("/liked-videos") ; 
+    }
+
     return (
         <div>
             <Category 
@@ -43,6 +47,7 @@ function ProfileRelatedLinks () {
                 <Category 
                 icon={sidebar_profile_related_links_images.likes_icon}
                 text="Liked Videos"
+                click={see_your_likes}
                 />
         </div>
     )

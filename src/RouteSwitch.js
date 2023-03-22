@@ -8,6 +8,7 @@ import PlayVideo from "./components/pages/VideoPlayer";
 import ChannelPage from "./components/pages/channel_page";
 import UploadAVideo from "./components/pages/upload-a-video";
 import LoadViewingHistory from "./components/pages/profile-related-pages/history";
+import LoadLikedVideos from "./components/pages/profile-related-pages/liked-videos";
 import { useEffect, useMemo, useState } from "react";
 import { userContext } from "./components/utils/contexts";
 import './styles/App.css';
@@ -45,6 +46,8 @@ const RouteSwitch = () => {
                         <Route exact path="/upload-video" element={<UploadAVideo/>}/>
                         <Route exact path="/channel-page/:id" element={<ChannelPage/>}/>
                         {user ? <Route exact path="/viewing-history" element={<LoadViewingHistory/>}/> : null } 
+                        {user ? <Route exact path="/liked-videos" element={<LoadLikedVideos/>}/> : null } 
+                        
                     </Routes>
                 </div>
             </userContext.Provider>

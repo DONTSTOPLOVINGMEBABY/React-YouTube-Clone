@@ -1,15 +1,15 @@
-#user-history {
+.profile-related-page {
     font-family: "YouTube Sans, Roboto";
     color: white;
     flex-direction: column;
     align-items: center;
 }
 
-#user-history-title {
+.profile-related-title {
     margin-top: 50px;
 }
 
-#user-history-preview-players {
+.profile-related-players {
     width: 95%;
     height: 100%; 
     display: flex;
