@@ -11,6 +11,7 @@ import LoadViewingHistory from "./components/pages/profile-related-pages/history
 import LoadLikedVideos from "./components/pages/profile-related-pages/liked-videos";
 import LoadWatchLater from "./components/pages/profile-related-pages/watch-later";
 import ShowSubscriptions from "./components/pages/Subscriptions-Page";
+import {UserUploads, MusicUploads, MemesUploads, NatureUploads, PlanesUploads} from "./components/pages/User-Uploads";
 import { useEffect, useMemo, useState } from "react";
 import { userContext } from "./components/utils/contexts";
 import './styles/App.css';
@@ -51,6 +52,11 @@ const RouteSwitch = () => {
                         {user ? <Route exact path="/liked-videos" element={<LoadLikedVideos/>}/> : null } 
                         {user ? <Route exact path="/watch-later" element={<LoadWatchLater/>}/> : null }
                         {user ? <Route exact path="/subscriptions" element={<ShowSubscriptions/>}/> : null }
+                        {user ? <Route exact path="/user-uploads" element={<UserUploads/>}/> : null }
+                        {user ? <Route exact path="/music-uploads" element={<MusicUploads/>}/> : null }
+                        {user ? <Route exact path="/memes-uploads" element={<MemesUploads/>}/> : null }
+                        {user ? <Route exact path="/nature-uploads" element={<NatureUploads/>}/> : null }
+                        {user ? <Route exact path="/plane-uploads" element={<PlanesUploads/>}/> : null }
                     </Routes>
                 </div>
             </userContext.Provider>

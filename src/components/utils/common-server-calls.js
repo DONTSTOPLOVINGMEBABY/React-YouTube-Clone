@@ -92,6 +92,34 @@ async function set_download_links_by_array(array, setDownloadLinks = null, setVi
 }
 
 
+const query_with_category_and_search_paramater = async (category, search_paramter, setNamesCallBack, setNamesAndLinkCallback) => {
+    let default_videos = [] ; 
+    let user_videos = [] ; 
+    let videos = [] ; 
+    let namesAndLinks = {}
+
+    let videos_collection = collection(firestore, "videos") ; 
+    let create_query = query(videos_collection, where(category, "==", search_paramter)) ; 
+    let query_result = (await getDocs(create_query)).docs.forEach((doc) => {
+        videos.push(doc.id.replace(/_/g, "/")) ; 
+    })
+    const video_urls = await Promise.all(
+        videos.map( async (name) => {
+            let name_ref = ref(storage, name) ; 
+            return await getDownloadURL(name_ref) ; 
+        })
+    )
+
+    videos.map( (name, index) => {
+        namesAndLinks[name] = video_urls[index] ; 
+    })
+    
+    setNamesAndLinkCallback(namesAndLinks)
+    setNamesCallBack(videos) 
+}   
+
+
+
 
 
 export {
@@ -99,5 +127,6 @@ export {
     set_download_links_by_creator, 
     set_download_links_default_channels, 
     set_download_links_by_array, 
+    query_with_category_and_search_paramater, 
     setUserObject, 
 }
