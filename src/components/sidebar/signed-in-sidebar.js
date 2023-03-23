@@ -97,7 +97,6 @@ function SideBar () {
     }, [])
 
 
-
     return (
         <div className="sidebar">
             <div className="general-nav-links">
@@ -109,7 +108,7 @@ function SideBar () {
             <div className="subscriptions category-border" >
                 <h3 className="sidebar-subtitle">Subscriptions</h3>
                 {/* Replace this with user's subscriptions */}
-                { subscribedChannels && setSubscribedProfileChannels && subscribedChannels.map( (sub, index) => {
+                { subscribedChannels && subscribedChannels.map( (sub, index) => {
                     
                     return ( <Category 
                         icon={subscribedProfilePhotos[sub]}
@@ -121,6 +120,7 @@ function SideBar () {
                 <Category 
                     icon={subscriptions_section_images.arrow_over_icon}
                     text="All Subscriptions"
+                    click={() => navigate("/subscriptions")}
                 /> 
             </div>
             <div className="display-categories category-border">
