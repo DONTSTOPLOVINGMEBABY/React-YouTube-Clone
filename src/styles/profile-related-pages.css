@@ -32,6 +32,8 @@
     margin-right: 50px;
     max-width: 220px;
     text-align: center;
+    cursor: pointer;
+    
 }
 
 .subscriber-title {
