@@ -185,7 +185,7 @@ function PlanesUploads () {
 
     return (
         <div className="HomePage categories-page">
-            <h1 className="categories-title">Category Uploads</h1>
+            <h1 className="categories-title">Plane Uploads</h1>
             <div className="category-players">
             { namesAndLinks && videoNames.map( (name) => {
                 console.log(name)
