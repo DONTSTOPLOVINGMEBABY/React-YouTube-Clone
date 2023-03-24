@@ -40,10 +40,11 @@
 #choose-a-file-title {
     margin: 0;
     text-align: center;
+    width: 95%;
 }
 
 #file-button, #file-metadata-button, #upload-video-button {
-    height: 36px;
+    height: 60px;
     width: 149px;
     border: none;
     border-radius: 25px;
