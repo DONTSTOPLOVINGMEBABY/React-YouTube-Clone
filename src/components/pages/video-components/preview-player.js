@@ -81,8 +81,8 @@ function PreviewPlayer (props) {
         window.location.reload() ; 
     }  
 
-    const load_channel = () => {
-
+    const load_channel = (event) => {
+        event.stopPropagation();
         navigate(`/channel-page/${channelInfo.channel_name}`, { state : {
             channel_information : channelInfo, 
         }})
