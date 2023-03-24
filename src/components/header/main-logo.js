@@ -30,7 +30,7 @@ function MainLogo () {
     
     return ( 
         <div className="main-logo">
-            <img className="wrap-icon" onClick={trigger_menu} id="menu-icon" src={menu_icon} alt="menu-icon"/>
+            {/* <img className="wrap-icon" onClick={trigger_menu} id="menu-icon" src={menu_icon} alt="menu-icon"/> */}
             <img id="youtube-icon" src={youtube_icon} onClick={return_home} alt="YouTube Icon"/> 
             <div id="youtube-text" onClick={return_home} >Fake-YouTube</div>
         </div> 
