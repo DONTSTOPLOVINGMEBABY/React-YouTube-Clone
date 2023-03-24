@@ -22,7 +22,7 @@ function AboutFakeYouTube() {
                 </ul>
                 Overall, I'm pleased with how the application turned out given where I was in my journey as a 
                 developer. 
-                <a href="https://github.com/DONTSTOPLOVINGMEBABY/Fake-YouTube">This application is on GitHub 
+                <a href="https://github.com/DONTSTOPLOVINGMEBABY/Fake-YouTube" target="_blank">This application is on GitHub 
                 and can be viewed here.</a> Feel free to clone, fork, and change in anyway you see fit!
             </span>
         </div>
