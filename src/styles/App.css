@@ -27,3 +27,22 @@ body {
 .simple {
     display: flex;
 }
+
+.about-fake-youtube {
+    font-family: "YouTube Sans, Roboto, Raleway";
+    color: white;
+    flex-direction: column;
+    align-items: center;
+}
+
+#about-fake-youtube-text {
+    max-width: 1000px;
+    width: 95%;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+#about-fake-youtube-text a {
+    color: white;
+    margin-left: 5px;
+}
