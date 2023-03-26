@@ -21,7 +21,6 @@ function UserUploads () {
             <h1 className="categories-title">User Uploads</h1>
             <div className="category-players">
             { namesAndLinks && videoNames.map( (name) => {
-                console.log(name)
                 return (
                 <PreviewPlayer 
                 className="home-page-player"
@@ -62,7 +61,6 @@ function MusicUploads ( ) {
             <h1 className="categories-title">Music Uploads</h1>
             <div className="category-players">
             { namesAndLinks && videoNames.map( (name) => {
-                console.log(name)
                 return (
                 <PreviewPlayer 
                 className="home-page-player"
@@ -104,7 +102,6 @@ function MemesUploads () {
             <h1 className="categories-title">Memes Uploads</h1>
             <div className="category-players">
             { namesAndLinks && videoNames.map( (name) => {
-                console.log(name)
                 return (
                 <PreviewPlayer 
                 className="home-page-player"
@@ -147,7 +144,6 @@ function NatureUploads () {
             <h1 className="categories-title">Nature Uploads</h1>
             <div className="category-players">
             { namesAndLinks && videoNames.map( (name) => {
-                console.log(name)
                 return (
                 <PreviewPlayer 
                 className="home-page-player"
@@ -188,7 +184,6 @@ function PlanesUploads () {
             <h1 className="categories-title">Plane Uploads</h1>
             <div className="category-players">
             { namesAndLinks && videoNames.map( (name) => {
-                console.log(name)
                 return (
                 <PreviewPlayer 
                 className="home-page-player"
