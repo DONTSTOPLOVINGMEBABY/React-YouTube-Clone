@@ -111,7 +111,7 @@ function PreviewPlayer (props) {
 
     return (
         <div className={props.className} onMouseEnter={playVideo} onClick={load_video} onMouseLeave={pauseVideo}>
-            {  profileURL ? <>
+            { videoInformation && profileURL ? <>
                 <div className={props.main_container}>
                     <video className={props.video_class} ref={videoRef} muted>
                         <source src={props.video} type="video/mp4"/>
