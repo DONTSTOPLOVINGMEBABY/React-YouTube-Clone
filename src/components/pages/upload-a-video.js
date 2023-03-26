@@ -1,10 +1,11 @@
 import {doc, getDoc, collection, getDocs, setDoc, updateDoc, increment, arrayRemove, arrayUnion, query, where} from "@firebase/firestore"
-import {ref, uploadBytesResumable} from "@firebase/storage"
+import {getDownloadURL, ref, uploadBytesResumable} from "@firebase/storage"
 import { useRef, useState, useContext } from "react"
 import {userContext} from "../utils/contexts" 
 import { firestore, storage } from "../../firebase/firebase"
 import "../../styles/upload-a-video.css"
 import uploadIcon from "../assets/upload-image.svg" ; 
+import { useNavigate } from "react-router-dom"
  
 function UploadAVideo () {
 
@@ -15,8 +16,9 @@ function UploadAVideo () {
     const [reviewFile, setReviewFile] = useState(false) ; 
     const [showPreview, setShowPreview] = useState(false) ; 
     const {user, setUser} = useContext(userContext) ; 
-    const [successfulUpload, setSuccessfulUpload] = useState(false) ; 
-     
+    const [successfulUpload, setSuccessfulUpload] = useState(false) ;
+    
+    const navigate = useNavigate() ; 
 
     const file_input = useRef() ; 
     const file_input_image = useRef() ; 
@@ -32,8 +34,8 @@ function UploadAVideo () {
     const videoCategoryRef = useRef() ; 
 
     const save_file_locally = () => {
-        if (file_input.current.files[0].size > 31000000){
-            alert("File must be smaller than 31 megabytes") ; 
+        if (file_input.current.files[0].size > 100000000){
+            alert("File must be smaller than 100 megabytes") ; 
             return ; 
         }
         setVideoFile(file_input.current.files[0]) ;   
@@ -116,6 +118,40 @@ function UploadAVideo () {
             "playlists.uploads" : arrayUnion(`Uploads_${user.uid}_${saveVideoTitle}.mp4`), 
         })
     }
+
+    const show_video = async (e) => {
+        // navigate()
+
+        // let promises = Promise.all([
+        //     await getDoc(video_doc), 
+        //     await getDoc(channel_doc), 
+        //     await getDownloadURL(ref(storage, `Uploads/${user.uid}/${saveVideoTitle}.mp4`))
+        // ])
+
+        e.preventDefault() ; 
+       
+        let video_doc = doc(firestore, "videos", `Uploads_${user.uid}_${saveVideoTitle}.mp4`)
+        let channel_doc = doc(firestore, "users", user.uid) ; 
+
+
+        let videoInformation = (await getDoc(video_doc)).data() ; 
+        let channelInfo = (await getDoc(channel_doc)).data() ; 
+        let download_url = await getDownloadURL(ref(storage, `Uploads/${user.uid}/${saveVideoTitle}.mp4`))
+        let video_time = 0 ; 
+
+        console.log(videoInformation)
+        console.log(channelInfo)
+        console.log(download_url)
+
+        navigate(`/video-player/${channelInfo.channel_name}#${videoInformation.title}`, {state : {
+            video_information: videoInformation, 
+            channel_information : channelInfo, 
+            video_time : video_time, 
+            download_url : download_url, 
+        }}) 
+        
+        window.location.reload() ; 
+     }   
     
 
 
@@ -185,9 +221,11 @@ function UploadAVideo () {
                              <div id="progress__fill" ref={progress_fill}></div>
                              <span id="progress__text">{progressText}%</span>
                         </div>
-                        { successfulUpload ? <h2 id="upload-video-form-title">
-                            Your Upload was Successful! You can view it on your Homepage!
-                        </h2> : null }
+                        { successfulUpload ? <div id="separate-link-and-title"><h2 id="upload-video-form-title">
+                            Your Upload was Successful! You can view it on your Homepage.
+                            </h2>
+                            <a href="#" id="view-video-link" onClick={show_video}>View Your Video</a>
+                        </div> : null }
                     </div> : null }
 
             </div>

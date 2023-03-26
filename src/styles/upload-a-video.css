@@ -12,7 +12,6 @@
     min-height: 650px;
     min-width: 570px;
     display: flex;
-    font-family: "Roboto";
     color: white;
     font-family: "YouTube Sans";
     font-weight: 700;
@@ -189,4 +188,17 @@ label {
     align-items: center;
     display: flex;
     flex-direction: column;
+}
+
+#view-video-link {
+    font-family: "YouTube Sans";
+    font-size: 18px;
+    color: white;
+}
+
+#separate-link-and-title {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 }

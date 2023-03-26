@@ -35,6 +35,8 @@ function PlayVideo () {
     const [views, setViews] = useState(video_information.view_count) ; 
     const {user, setUser} = useContext(userContext) ; 
     const navigate = useNavigate() ; 
+    const [autoPlay, setAutoPlay] = useState(true) ; 
+
 
     const default_channels = [
         "Cinematic Masterpiece", 
@@ -60,7 +62,7 @@ function PlayVideo () {
         })
         hold_category_videos = hold_category_videos.filter(item => item.split("/")[2] != `${video_information.title}`)
 
-        while (hold_category_videos.length + all_videos.length < 10){
+        while (hold_category_videos.length + all_videos.length < 12){
             let random_number = Math.floor(Math.random() * (rest_videos.length - 1)) ; 
             if (!all_videos.includes(rest_videos[random_number]) && !hold_category_videos.includes(rest_videos[random_number]) && 
             video_information.title != rest_videos[random_number].split("/")[2]) 
@@ -184,6 +186,9 @@ function PlayVideo () {
         load_side_videos() ;
         grab_profile() ; 
         load_comments() ; 
+        console.log("channel_information", channel_information)
+        console.log("download_url", download_url)
+        console.log("video_information", video_information)
     }, [])
     
 
@@ -191,7 +196,7 @@ function PlayVideo () {
         <div className="HomePage PlayVideo">
             <div id="specific" className="left-side">
                 <div className="big-video-container">
-                    <video id="play-big-video" controls onPlay={update_video_view_count}>
+                    <video id="play-big-video" controls autoPlay={autoPlay} onPlay={update_video_view_count}>
                         <source src={download_url} type="video/mp4"/>
                     </video>
                 </div>
@@ -245,7 +250,7 @@ function PlayVideo () {
                 </div>
             </div>
             <div className="right-side">
-                { sideVideoObject && sideVideos && false && sideVideos.map( (name) => { 
+                { sideVideoObject && sideVideos && sideVideos.map( (name) => { 
                     return ( 
                     <PreviewPlayer
                     className="play-video-main-class"
