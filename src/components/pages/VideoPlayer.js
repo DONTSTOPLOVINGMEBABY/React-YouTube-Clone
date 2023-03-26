@@ -36,6 +36,7 @@ function PlayVideo () {
     const {user, setUser} = useContext(userContext) ; 
     const navigate = useNavigate() ; 
     const [autoPlay, setAutoPlay] = useState(true) ; 
+    const [played, setPlayed] = useState(false) ; 
 
 
     const default_channels = [
@@ -99,6 +100,8 @@ function PlayVideo () {
     }
 
     const update_video_view_count = async () => {
+        if (played){return}
+        setPlayed(true) ; 
         let string, string2 ; 
         if (default_channels.includes(video_information.creator)){ 
             string = `Uploads_${video_information.creator}_${video_information.title}`
@@ -186,9 +189,6 @@ function PlayVideo () {
         load_side_videos() ;
         grab_profile() ; 
         load_comments() ; 
-        console.log("channel_information", channel_information)
-        console.log("download_url", download_url)
-        console.log("video_information", video_information)
     }, [])
     
 
