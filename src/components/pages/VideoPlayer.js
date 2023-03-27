@@ -128,7 +128,7 @@ function PlayVideo () {
             }
             else {
                 await updateDoc(watching_user_doc, {
-                    "playlists.history" : arrayUnion(`Uploads/${video_information.user_id}/${video_information.title}`), 
+                    "playlists.history" : arrayUnion(`Uploads_${video_information.user_id}_${video_information.title}`), 
                 })
             }
         }
