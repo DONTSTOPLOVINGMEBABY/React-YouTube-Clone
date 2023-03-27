@@ -33,9 +33,8 @@ function Search (props) {
 
     const execute_search = (e) => {
         e.preventDefault() ; 
-        console.log("Execute Search!") ;
-        console.log(search_input.current.value) ; 
-        
+        if (search_input.current.value.trim() == ""){return} ; 
+        click_search_result(search_input.current.value) ; 
     }
 
     const update_search_results = async () => {
@@ -70,7 +69,7 @@ function Search (props) {
                 }
             })
         })
-        console.log(channelsAndVideos)
+        
         setSearchResults(results) ; 
     }
 
@@ -158,6 +157,20 @@ function Search (props) {
 
     const click_search_result = (text) => {
         search_input.current.value = text ; 
+        
+        let videos = searchResults.map( (result) )
+
+
+        navigate(`/show-results/${text}`, {state : {
+
+        }})
+
+        // I think the best idea would be to pass it the titles
+        // on server object
+
+
+        window.location.reload() ; 
+
     }
 
 

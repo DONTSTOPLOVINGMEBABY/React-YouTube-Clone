@@ -1,9 +1,14 @@
 import "../../styles/header.css"
+import { useLocation } from "react-router-dom";
 
 function SearchResultsPage(props) {
 
+    const location = useLocation() ; 
+
     return (
-        <div>Oh fuck</div>
+        <div className="HomePage">
+            Hello there
+        </div>
     )
 
 }

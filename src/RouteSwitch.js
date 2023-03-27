@@ -12,6 +12,7 @@ import LoadLikedVideos from "./components/pages/profile-related-pages/liked-vide
 import LoadWatchLater from "./components/pages/profile-related-pages/watch-later";
 import ShowSubscriptions from "./components/pages/Subscriptions-Page";
 import AboutFakeYouTube from "./components/pages/About";
+import SearchResultsPage from "./components/pages/search-result-page";
 import {UserUploads, MusicUploads, MemesUploads, NatureUploads, PlanesUploads} from "./components/pages/Category-Components";
 import { useEffect, useMemo, useState } from "react";
 import { userContext } from "./components/utils/contexts";
@@ -59,6 +60,7 @@ const RouteSwitch = () => {
                         {user ? <Route exact path="/nature-uploads" element={<NatureUploads/>}/> : null }
                         {user ? <Route exact path="/plane-uploads" element={<PlanesUploads/>}/> : null }
                         {user ? <Route exact path="/about" element={<AboutFakeYouTube/>}/> : null }
+                        <Route exact path="/show-results/:id" element={<SearchResultsPage/>}/>
                     </Routes>
                 </div>
             </userContext.Provider>
