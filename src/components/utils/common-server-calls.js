@@ -118,8 +118,16 @@ const query_with_category_and_search_paramater = async (category, search_paramte
     setNamesCallBack(videos) 
 }   
 
-
-
+const default_channels = [
+    "Cinematic Masterpiece", 
+    "Dope House", 
+    "Everything Planes", 
+    "House of Memes", 
+    "Meditation Zone", 
+    "Meditative Music",
+    "Meme Powerhouse", 
+    "Tranquil Scenes", 
+]
 
 
 export {
@@ -129,4 +137,5 @@ export {
     set_download_links_by_array, 
     query_with_category_and_search_paramater, 
     setUserObject, 
+    default_channels, 
 }
