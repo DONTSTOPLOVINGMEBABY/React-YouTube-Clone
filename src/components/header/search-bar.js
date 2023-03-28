@@ -116,7 +116,7 @@ function Search (props) {
     const make_default_search_results = async () => {
 
         let initial_results = new Set(), past_searches = [], history = [], likes = [] ; 
-        if (user){
+        if (user.logged_in){
             let user_doc = doc(firestore, "users", user.uid) ; 
             let user_info = (await getDoc(user_doc)).data() ; 
              
@@ -169,13 +169,12 @@ function Search (props) {
             else {videoTitles.includes(result)}{videos.push(result)}  
         })
 
-        if (user){
+        if (user.logged_in){
             let user_doc = doc(firestore, "users", user.uid) ; 
             await updateDoc( user_doc, {
                 "playlists.past_searches" : arrayUnion(text), 
             })
         }
-
 
         navigate(`/show-results/${text}`, {state : {
             videos : videos, 
