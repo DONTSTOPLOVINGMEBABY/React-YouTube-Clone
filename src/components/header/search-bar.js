@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useContext } from "react"
 import search_icon from "../assets/search-icon.svg"
 import { firestore } from "../../firebase/firebase"
-import {doc, getDocs, collection, getDoc, query, where} from "firebase/firestore"
+import {doc, getDocs, collection, getDoc, query, where, updateDoc, arrayUnion} from "firebase/firestore"
 import {userContext} from "../utils/contexts"
 import { useNavigate } from "react-router-dom"
 import SearchResult from "./search-bar-comps/search-result"
@@ -79,20 +79,23 @@ function Search (props) {
         let video_creators = new Set() ; 
         let server_title_names = {} ; 
         let video_collection = collection(firestore, "videos") ; 
+        let video_docs = (await getDocs(video_collection)).docs ; 
 
-        (await getDocs(video_collection)).docs.forEach( async (video) => {
-            let video_name = video.id.split("_")[2].split(".")[0] ;  
-            let video_creator = video.id.split("_")[1] ;  
-            video_creators.add(video_creator) ; 
-            video_names.add(video_name) ;
-
-            if (server_title_names[video_name]){
-                server_title_names[video_name] = [...server_title_names[video_name], video.id.replace(/_/g, '/')] ; 
-            }
-            else {
-                server_title_names[video_name] = [video.id.replace(/_/g, '/')] 
-            }
-        }) 
+        await Promise.all( 
+            video_docs.map( async (video) => {
+                let video_name = video.id.split("_")[2].split(".")[0] ;  
+                let video_creator = video.id.split("_")[1] ;  
+                video_creators.add(video_creator) ; 
+                video_names.add(video_name) ;
+    
+                if (server_title_names[video_name]){
+                    server_title_names[video_name] = [...server_title_names[video_name], video.id.replace(/_/g, '/')] ; 
+                }
+                else {
+                    server_title_names[video_name] = [video.id.replace(/_/g, '/')] 
+                }
+            })
+        )
 
         let video_creators_list = [...video_creators] ; 
 
@@ -106,7 +109,7 @@ function Search (props) {
         setVideoTitles([...video_names]) ; 
         setChannelNames([...translate_video_creators]) ; 
         setChannelsAndVideos([...video_names, ...translate_video_creators])
-        setServerTitleNames(serverTitleNames) ;
+        setServerTitleNames(server_title_names) ;
     }
 
 
@@ -124,7 +127,7 @@ function Search (props) {
         
         past_searches.forEach( (search) => {
             if (initial_results.size >= 14){return} ;  
-            initial_results.add(search.split("_")[2].split(".")[0])
+            initial_results.add(search)
         })
 
         if (initial_results.size >= 14){}
@@ -155,19 +158,30 @@ function Search (props) {
         setSearchResults([...initial_results])
     }
 
-    const click_search_result = (text) => {
+    const click_search_result = async (text) => {
         search_input.current.value = text ; 
-        
-        let videos = searchResults.map( (result) )
+        let videos = [], channels = [] ; 
+        searchResults.forEach( (result) => {
+            if (channelNames.includes(result)){
+                channels.push(result)
+                return 
+            }
+            else {videoTitles.includes(result)}{videos.push(result)}  
+        })
+
+        if (user){
+            let user_doc = doc(firestore, "users", user.uid) ; 
+            await updateDoc( user_doc, {
+                "playlists.past_searches" : arrayUnion(text), 
+            })
+        }
 
 
         navigate(`/show-results/${text}`, {state : {
-
+            videos : videos, 
+            channels : channels, 
+            serverTitleNames : serverTitleNames, 
         }})
-
-        // I think the best idea would be to pass it the titles
-        // on server object
-
 
         window.location.reload() ; 
 
@@ -204,7 +218,7 @@ function Search (props) {
                 onChange={update_search_results}
                 onClick={handleInputClick}
                 /> 
-                { activateSearchBar ? <div id="search-drop-down">
+                { searchResults && activateSearchBar ? <div id="search-drop-down">
                     {searchResults.map( (result) => {
                         return (
                         <SearchResult title={result} key={result} 

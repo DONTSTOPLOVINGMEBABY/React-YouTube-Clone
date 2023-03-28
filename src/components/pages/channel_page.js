@@ -35,7 +35,6 @@ function ChannelPage () {
     const [namesAndLinks, setNamesAndLinks] = useState(null) ; 
 
     const setInitialVariables = async () => {
-        console.log(channelInformation)
         setChannelName(channelInformation.channel_name)
         setSubscribers(channelInformation.subscribers) ; 
         setNumberOfViews(channelInformation.total_channel_views)
@@ -54,8 +53,7 @@ function ChannelPage () {
 
     useEffect( () => {
         if (channelInformation){setInitialVariables()}
-        set_download_links_by_creator(channelInformation.channel_name, setDownloadLinks, setVideoNames, setNamesAndLinks) ; 
-        
+        set_download_links_by_creator(channelInformation.channel_name, setDownloadLinks, setVideoNames, setNamesAndLinks) ;         
     }, [channelInformation])
 
 

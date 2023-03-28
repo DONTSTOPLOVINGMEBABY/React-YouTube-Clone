@@ -121,6 +121,98 @@
     background-color: #EEEEEE;
 }
 
+.Search-Results {
+    color: white;
+    justify-content: center;
+}
+
+.Search-Results-Container { 
+    height: 100%;
+    margin-top: 50px;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-page-player {
+    width: 855px;
+    height: 205px;
+    display: flex;
+    cursor: pointer;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.search-video-container {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.search-video-information-main {
+    padding: 12px;
+    display: flex;
+    margin: 24px 0 4px 0 ; 
+}
+
+.search-video-title-homepage {
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 6px;
+    width: 300px ;
+    max-height: 42px; 
+    overflow: hidden;
+}
+
+.other-information-search {
+    color: var(--preview-video-sub-info);
+    display: flex;
+    flex-direction: column;
+}
+
+#display-channels-search {
+    border-top: 1px solid #3F3F3F;
+    border-bottom: 1px solid #3F3F3F;
+    width: 855px; 
+}
+
+.channel-search-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#channel-search-profile-container {
+    width: 33%;
+}
+
+#channel-search-profile {
+    height: 136px;
+    width: 136px;
+    border-radius: 50%;
+}
+
+#channel-search-profile-info {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    justify-content: center;
+}
+
+#channel-search-subscribe {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
 
 .login {
     height: 36px;
