@@ -119,7 +119,7 @@ function PlayVideo () {
         await updateDoc( uploading_user_doc, {
             "total_channel_views" : increment(1), 
         })
-        if (user){
+        if (user.logged_in){
             let watching_user_doc = doc(firestore, "users", user.uid) ; 
             if (default_channels.includes(video_information.creator)){
                 await updateDoc( watching_user_doc, {

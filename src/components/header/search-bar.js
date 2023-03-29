@@ -160,14 +160,17 @@ function Search (props) {
 
     const click_search_result = async (text) => {
         search_input.current.value = text ; 
-        let videos = [], channels = [] ; 
+        let videos = new Set(), channels = [] ;
+        if (videoTitles.includes(text)){videos.add(text)} 
         searchResults.forEach( (result) => {
             if (channelNames.includes(result)){
                 channels.push(result)
                 return 
             }
-            else {videoTitles.includes(result)}{videos.push(result)}  
+            else {videoTitles.includes(result)}{videos.add(result)}  
         })
+
+        videos = [...videos] ; 
 
         if (user.logged_in){
             let user_doc = doc(firestore, "users", user.uid) ; 
