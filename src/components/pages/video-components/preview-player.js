@@ -7,7 +7,7 @@ import { ref, getDownloadURL } from "firebase/storage";
 
 function PreviewPlayer (props) {
 
-    const [videoInformation, setVideoInformation] = useState({}) ; 
+    const [videoInformation, setVideoInformation] = useState(null) ; 
     const [channelInfo, setChannelInfo] = useState(null) ; 
     const [profileURL, setProfileURL] = useState(null) ; 
     const [uploadTimeDifferece, setUploadTimeDifference] = useState(null) ; 
@@ -104,14 +104,16 @@ function PreviewPlayer (props) {
     }, [])
 
     useEffect( () => {
-        if (channelInfo){grab_profile_photo()}
-        calculate_date_difference() ; 
-    }, [channelInfo])
+        if (channelInfo && videoInformation){
+            grab_profile_photo()
+            calculate_date_difference() ;
+        }
+    }, [channelInfo, videoInformation])
 
 
     return (
         <div className={props.className} onMouseEnter={playVideo} onClick={load_video} onMouseLeave={pauseVideo}>
-            { videoInformation && profileURL ? <>
+            { videoInformation && profileURL && channelInfo ? <>
                 <div className={props.main_container}>
                     <video className={props.video_class} ref={videoRef} muted>
                         <source src={props.video} type="video/mp4"/>
