@@ -2,15 +2,16 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage" ; 
 import {getFirestore} from "@firebase/firestore" ; 
 import {getAuth} from "@firebase/auth"
-
+const dotenv = require("dotenv")
+dotenv.config()
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCKAdCQp4uPK1dgYvRAdOdVMxvPUvBHJzc",
-  authDomain: "fake-32e47.firebaseapp.com",
-  projectId: "fake-32e47",
-  storageBucket: "fake-32e47.appspot.com",
-  messagingSenderId: "261979478486",
-  appId: "1:261979478486:web:a95042d0e25c7002212c77"
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId
 };
 
 // Initialize Firebase

@@ -115,7 +115,7 @@ function PreviewPlayer (props) {
         <div className={props.className} onMouseEnter={playVideo} onClick={load_video} onMouseLeave={pauseVideo}>
             { videoInformation && profileURL && channelInfo ? <>
                 <div className={props.main_container}>
-                    <video className={props.video_class} ref={videoRef} muted>
+                    <video className={props.video_class} preload="metadata" ref={videoRef} muted>
                         <source src={props.video} type="video/mp4"/>
                     </video>
                 </div>
