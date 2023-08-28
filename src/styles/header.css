@@ -1,0 +1,453 @@
+
+.header {
+    height: 56px;
+    background-color: var(--background-color) ;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 12;
+}
+
+.main-logo {
+    width: 169px;
+    height: 56px;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    cursor: pointer;
+}
+
+#youtube-icon {
+    height: 34px ;
+    width: 34px;
+    margin-right: 3px;
+    margin-left: 8px;
+}
+
+#menu-icon {
+    height: 34px;
+    width: 34px;
+    margin-left: 3px;
+}
+
+#youtube-text {
+    color: white;
+    font-weight: 700;
+}
+
+
+.search-container {
+    flex: 0 1 624px;
+    display: flex;
+}
+
+.search:focus-within{
+    border: 1px solid #1A62B9;
+    border-radius: 40px 0 0 40px ;
+}
+
+.search {
+    height: 40px;
+    background-color: var(--search-bar-color) ; 
+    border-radius: 40px 0 0 40px;
+    border: #303030 2px solid;
+    padding: 0px 4px 0px 16px ; 
+    caret-color: #f1f1f1;
+    flex: 0 1 540px;
+}
+
+#search-input {
+    background-color: var(--search-bar-color);
+    border: none;
+    height: 95%;
+    width: 95%;
+    margin-left: 8px;
+    font-size: larger;
+    color: #f1f1f1;
+}
+
+#search-input:focus {
+    outline: none;
+}
+
+.search-icon-container {
+    flex: 0 1 64px;
+    background-color: var(--search-bar-color) ; 
+    border: #303030 2px solid; 
+    border-radius: 0 40px 40px 0 ;
+    border-left: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-icon {
+    height: 24px;
+    width: 24px;
+    opacity: .9;
+}
+
+#search-drop-down {
+    background-color: white;
+    height: 500px;
+    width: 100% ; 
+    margin-top: 4px;
+    border-radius: 25px 25px 25px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 0 12px 0;
+    overflow: hidden;
+}
+
+.search-result {
+    height: calc(480px / 14);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.search-result-title {
+    margin-left: 12px;
+    font-weight: 600;
+    font-family: "Roboto";
+}
+
+.search-result:hover {
+    background-color: #EEEEEE;
+}
+
+.Search-Results {
+    color: white;
+    justify-content: center;
+}
+
+.Search-Results-Container { 
+    height: 100%;
+    margin-top: 50px;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-page-player {
+    width: 855px;
+    height: 205px;
+    display: flex;
+    cursor: pointer;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.search-video-container {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.search-video-information-main {
+    padding: 12px;
+    display: flex;
+    margin: 24px 0 4px 0 ; 
+}
+
+.search-video-title-homepage {
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 6px;
+    width: 300px ;
+    max-height: 42px; 
+    overflow: hidden;
+}
+
+.other-information-search {
+    color: var(--preview-video-sub-info);
+    display: flex;
+    flex-direction: column;
+}
+
+#display-channels-search {
+    border-top: 1px solid #3F3F3F;
+    border-bottom: 1px solid #3F3F3F;
+    width: 855px; 
+    padding: 20px 0 20px 0;
+}
+
+.channel-search-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0 12px 0 ; 
+}
+
+#channel-search-profile-container {
+    width: 33%;
+}
+
+#channel-search-profile {
+    height: 136px;
+    width: 136px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#channel-search-profile-info {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    justify-content: center;
+}
+
+#channel-search-subscribe {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+#search-channel-name {
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+
+#search-channel-info-mini, #total-views-search-channel {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 8px;
+    color: #AAA;
+}
+
+#search-mini-channel-name:hover {
+    color: white;
+    cursor: pointer;
+}
+
+
+.login {
+    height: 36px;
+    min-width: 102.1px;
+    border-radius: 25px;
+    border: 2px solid #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: var(--background-color);
+}
+
+#sign-in-text {
+    color: #3DA6FF;
+    font-weight: 600;
+    font-family: "Roboto";
+    font-size: 15px;
+}
+
+#profile-svg {
+    height: 24px;
+    width: 24px;
+    margin-right: 5px;
+}
+
+.logged-in {
+    min-width: 150px ;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+}
+
+
+.wrap-icon {
+    height: 40px;
+    width: 40px ;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .05s ease-in;
+    margin-right: 12px;
+}
+
+.wrap-icon:hover {
+    background-color: #272727;
+}
+
+#upload-video-icon {
+    height: 24px;
+    width: 24px;
+}
+
+#notifications-bell-icon {
+    height: 24px;
+    width: 24px;
+}
+
+.profile, #profile-picture-header {
+    height: 32px;
+    width: 32px;
+}
+
+#profile-picture-header {
+    border-radius: 50%;
+    cursor: pointer;
+} 
+
+
+
+.account-navigation {
+    position: absolute;
+    height: 400px;
+    width: 300px;
+    background-color: #282828;
+    right: 18px;
+    top: 56px;
+    border-radius: 25px;
+    padding: 16px;
+    color: white;
+    font: "Roboto";
+    font-size: 18px;
+    z-index: 50;
+   
+}
+
+#account-nav-profile-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%; 
+    margin-right: 16px;
+    
+}
+
+.account-navigation-user-info {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.category-border {
+    border-top: 1px solid #3F3F3F;
+}
+
+.profile-category {
+    width: 100%;
+
+}
+
+.profile-dropdown-cell {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    padding-top: 12px;
+    align-items: center;
+    cursor: pointer; 
+}
+
+
+.profile-dropdown-icon {
+    height: 30px;
+    width: 30px;
+    margin-right: 16px;
+    
+}
+
+.profile-dropdown-cell:hover {
+    background-color: #272727;
+}
+
+
+
+
+
+/* EVERYTHING RELATED TO THE MODAL HERE
+   PLEASE MOVE ME ONCE SOMETHING BETTER IS FOUND!
+*/ 
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 15, 15, .9);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 11;
+    height: 400px;
+    width: 500px;
+    cursor:default ; 
+}
+
+.modal-title {
+    font-size: 24px;
+}
+
+
+.finish-setting-up {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+    color: black;
+}
+
+#agreement {
+    font-family: "Roboto";
+    cursor: pointer;
+}
+
+#create-account-button {
+    width: 100px;
+    height: 50px;
+    margin-top: 12px;
+}
+
+#finish-setting-up-hold-form-inputs {
+    display: flex;
+    margin: 12px 0 12px 0;
+}
+
+.finish-setting-up-left {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.finish-setting-up-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form-cell-1 {
+    width: 95%;
+}
+
+.finish-setting-up-right > input {
+    margin-bottom: 4px ; 
+}
+
+/* END MODAL */ 

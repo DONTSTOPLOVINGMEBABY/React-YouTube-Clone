@@ -1,0 +1,541 @@
+@media screen and (max-width: 1000px) {
+    .right-side {
+        display: none;
+    }
+
+    #specific {
+        width: 95%;
+    }
+}
+
+
+.PlayVideo {
+    justify-content: center;
+    color: white;
+}
+
+#play-big-video {
+    width: 92%;
+}
+
+.left-side {
+    max-width: 1300px;
+    width: 82%;
+}
+
+.big-video-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.right-side {
+    height: calc(100vh - 56px);
+    width: 402px;
+}
+
+.play-video-main-class {
+    width: 402px;
+    height: 113px;
+    display: flex;
+    color: white;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.play-video-main-container {
+    min-width: 201px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+}
+
+.play-video-video {
+    width: 100%;
+    max-width: 201px;
+    border-radius: 25px;
+}
+
+
+.play-video-profile-picture {
+    display: none;
+}
+
+.play-video-other-information {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 12px 8px 12px;
+    color: #A7A7A7;
+}
+
+.play-video-title {
+    height: 40px;
+    margin: 0 0 4px 0;
+    overflow: hidden;
+    font-weight: 700;
+    
+    color: white;
+}
+
+.play-video-channel:hover {
+    color: white;
+}
+
+.play-video-group {
+    display: flex;
+    margin-top: 6px;
+}
+
+.play-video-sidebar-date {
+    margin-left: 3px;
+}
+
+#video-descriptions {
+    padding: 0 4% 0 4%; 
+}
+
+.description-title {
+    font-family: "Youtube Sans, Roboto";
+    font-size: 22px;
+    line-height: 20px;
+    font-weight: 600;
+    margin: 16px 0 12px 0 ;
+}
+
+.description-lower-half {
+    display: flex;
+}
+
+#owner {
+    margin: 6px 6px 0 0;
+    width: calc(50% - 6px);
+    display: flex;
+    align-items: center;
+}
+
+#owner-info {
+    display: flex;
+    margin-right: 24px;
+    cursor: pointer;
+}
+
+#owner-profile-picture {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+#owner-name {
+    font-family: "Raleway, Arial, Sans Seriff";
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+}
+
+#owner-name-sub-count {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 14px;
+    color: #AAAAAA;
+}
+
+
+#lower-half-right {
+    flex: 1 1 auto;
+    margin-top: 6px;
+}
+
+#lower-half-right-inner {
+    margin-left: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#description-and-views {
+    width: calc(100% - 24px);
+    height: 75px;
+    background-color: #272727;
+    margin-top: 24px;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 12px;
+}
+
+#description-and-views:hover {
+    background-color: #3D3D3E;
+}
+
+#views {
+    margin-right: 8px;
+}
+
+.views-and-upload-date {
+    display: flex;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+#description-content {
+    height: 19px;
+    overflow: hidden;
+}
+
+#expand-button {
+    margin-top: 8px;
+    font-family: "Arial" ;
+    color: white;
+}
+
+#description-and-views:hover > #expand-button {
+    font-weight: 700;
+}
+
+
+
+/* Subscribe-Button Styling */
+
+.subscribe-button {
+    border-radius: 25px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-family: "Roboto";
+}
+
+
+#subscribed-button {
+    background-color: #3D3D3E;
+    width: 150px;
+    height: 36px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#subscribed-button:hover {
+    background-color: #272727 ; 
+}
+
+#subscribe-button {
+    background-color: rgb(241,241,241); 
+    width: 94px;
+    height: 36px;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* End Subscribe Button Styling */
+
+/* Shared between Both */
+
+
+/* Like-Dislike Button Styling */
+
+#like-dislike-buttons-container {
+    width: 136px;
+    height: 35px;
+    display: flex;
+    margin-right: 8px;
+}
+
+.button-interact, #add-to-watch-later-button {
+    background-color: #3D3D3E;
+    cursor: pointer ; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#like-button {
+    height: 100%;
+    width: 61%;
+    border-radius: 25px 0 0px 25px;
+    border: none;
+    border-right: 1px solid #666667;
+}
+
+#dislike-button {
+    height: 100%;
+    width: 39%;
+    border-radius: 0 25px 25px 0;
+    border: none;
+}
+
+.like-button-icon-interact , #watch-later-button-icon {
+    height: 26px;
+    width: 26px;
+}
+
+.button-hover:hover, #add-to-watch-later-button:hover {
+    background-color: #272727;
+}
+
+#number-of-likes {
+    margin-left: 7px;
+    font-size: 18px;
+    color: white;
+    font-family: "Roboto, Raleway";
+    font-weight: 500;
+}
+
+#add-to-watch-later-container {
+    border-radius: 25px;
+    width: 155px;
+    height: 36px;
+}
+
+#add-to-watch-later-button {
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#watch-later-text {
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+/* End Like-Dislike Button Styling */
+
+/* Comments Components Syling */ 
+
+#comments {
+    height: 300px;
+    margin-top: 24px;
+}
+
+#buffer-height-between-last-comment {
+    height: 1px;
+}
+
+#create-a-comment {
+    min-height: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+#comment-profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+#top-section-create-comment {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 12px 0 12px;
+}
+
+#comment-input, #comment-reply {
+    flex: 1;
+    outline: 0;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    background-color: var(--background-color); 
+    color: white;
+}
+
+#comment-input:focus, #comment-reply:focus {
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) 1s;
+    /* transition: ease-in .4s; */
+    border-bottom: 2px solid white;
+}
+
+#submit-comment-button-set {
+    flex: 1;
+    display: flex;
+    justify-content: right;
+    padding-right: 12px;
+}
+
+#false-submit-comment-button , #true-submit-comment-button {
+    width: 93px;
+    height: 36px;
+    border-radius: 25px;
+    font-family: "Roboto";
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+}
+
+#true-submit-comment-button {
+    background-color: #3DA6FF;
+    cursor: pointer;
+}
+
+#false-submit-comment-button {
+    background-color: #272727;
+    color: #717171;
+}
+
+#load-all-comments {
+    margin-top: 32px;
+    padding: 0 12px 0 12px;
+    /* margin: 0 0 50px 0 ; */
+}
+
+.individual-comment {
+    display: flex;
+    margin: 0 0 40px 0;
+}
+
+.comments-likes-and-replies {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.name-and-date-comments {
+    display: flex;
+    align-items: center;
+}
+
+.display-name-comments {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Arial";
+    margin-right: 4px;
+}
+
+.display-date-comments {
+    color: #AAAAAA;
+    font-size: 14px;
+}
+
+.comment-renderer {
+    margin-top: 8px;
+    font-size: 14px;
+    max-height: 80px;
+    overflow: auto;
+    font-family: "Roboto";
+}
+
+.like-reply-to-comment {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+#like-dislike-comment {
+    height: 24px; 
+    width: 24px;
+    cursor: pointer;
+}
+
+.interact-element-styling-comments {
+    display: flex;
+    align-items: center ;
+}
+
+#comment-likes {
+    margin-left: 4px;
+    font-weight: 700;
+}
+
+.margin-right-comment-like-button {
+    margin-right: 8px;
+}
+
+#reply-to-comment-button , #cancel-reply-to-comment-button, #send-reply-to-comment {
+    margin-left: 4px;
+    background-color: var(--background-color);
+    border: none;
+    color: white;
+    cursor: pointer;
+    height: 45px;
+    width: 45px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reply-to-comment-button {
+    margin-right: 8px;
+}
+
+#send-reply-to-comment {
+    margin-left: 8px; 
+    height: 50px;
+    width: 90px;
+    border-radius: 25px;
+}
+
+
+#cancel-reply-to-comment-button {
+    height: 50px;
+    width: 90px;
+    margin-left: 8px;
+    border-radius: 25px;
+}
+
+#reply-to-comment-button:hover, #cancel-reply-to-comment-button:hover, #send-reply-to-comment:hover {
+    background-color: #272727;
+}
+
+.active-comment-reply {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.load-replies-button {
+    width: 98px;
+    height: 36px;
+    background-color: var(--background-color);
+    border: none;
+    border-radius: 25px;
+    color: #3DA6FF;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.load-replies-button:hover {
+    background-color: #253950;
+}
+
+.load-replies-button:active {
+    background-color: #3C4D62;
+}
+
+.load-replies-button-down-arrow {
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+}
+
+.comment-replies {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.comment-reply {
+    display: flex;
+    margin-top: 12px;
+}
+
+/* End Comments Components Syling */ 

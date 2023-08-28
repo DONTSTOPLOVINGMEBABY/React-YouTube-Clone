@@ -1,0 +1,44 @@
+.profile-related-page, .show-subscriptions, .categories-page {
+    font-family: "YouTube Sans, Roboto";
+    color: white;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-related-title , .categories-title{
+    margin-top: 50px;
+}
+
+.profile-related-players, #all-subscribers, .category-players {
+    width: 95%;
+    height: 100%; 
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-wrap: wrap;
+}
+
+.subscriber-profile-photo {
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+}
+
+.individual-subscriber {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+    max-width: 220px;
+    text-align: center;
+    cursor: pointer;
+    
+}
+
+.subscriber-title {
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: 24px;
+    overflow: hidden;
+}

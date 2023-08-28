@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+
+
+:root {
+    --background-color: #0f0f0f ; 
+    --search-bar-color: #121212 ; 
+    --preview-video-sub-info: #AAAAAA ; 
+}
+
+body {
+    margin: 0;
+    font-family: "Arial";
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--background-color);
+}
+
+.HomePage {
+    width: 95%;
+    height: calc(100vh - 56px);
+    display: flex;
+    overflow: auto;
+}
+
+.simple {
+    display: flex;
+}
+
+.about-fake-youtube {
+    font-family: "YouTube Sans, Roboto, Raleway";
+    color: white;
+    flex-direction: column;
+    align-items: center;
+}
+
+#about-fake-youtube-text {
+    max-width: 1000px;
+    width: 95%;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+#about-fake-youtube-text a {
+    color: white;
+    margin-left: 5px;
+}
