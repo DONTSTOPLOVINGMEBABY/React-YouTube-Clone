@@ -32,4 +32,4 @@ dedicated backend or a serverless solution through something such as Firebase Fu
 *All videos uploaded to this platform belong to their respective owners and/or are copyright free. The site is actively patrolled*
 *for non-copyright/stolen content.*
 
-The site is currently live on my personal site [here](https://henryjacobs.us) . 
+The site is currently live on my personal site [here](https://henryjacobs.us/React-YouTube-Clone/) . 
